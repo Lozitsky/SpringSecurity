@@ -11,15 +11,17 @@
 <html>
 <head>
     <title>Simple Login Form</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/structure.css">
+<%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/reset.css">--%>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/structure.css">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 </head>
 
 <body>
 
-<c:url value="/check_user" var="login_"/>
-<form class="box login" action="${login_}" method='post'>
+<%--<c:url value="${request.getContextPath()}/check_user" var="login_"/>
+<form class="box login" action="${login_}" method='post'>--%>
+<form class="box login" action="<%=request.getContextPath()%>/check_user" method="post">
     <fieldset class="boxBody">
         <label>Username</label>
         <input type="text" name='user_login' value='' tabindex="1" placeholder="put username" required>

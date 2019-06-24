@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 /**
  * Handles requests for the application home page.
  */
@@ -59,6 +61,18 @@ public class HomeController {
 
         return model;
 
+    }
+
+    @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+    public ModelAndView accessDenied(Principal user) {
+        ModelAndView model = new ModelAndView();
+        if (user != null) {
+            model.addObject("errorMsg", user.getName() + " does not have access to this page!");
+        } else {
+            model.addObject("errorMsg", "does not have access to this page!");
+        }
+        model.setViewName("/content/accessDenied");
+        return model;
     }
 
 }
