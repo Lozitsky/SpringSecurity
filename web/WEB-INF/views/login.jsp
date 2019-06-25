@@ -28,16 +28,23 @@
         <%--        <label><a href="#" class="rLink" tabindex="5">Forget your password?</a>Password</label>--%>
         <label>Password</label>
         <input type="password" name='password_login' tabindex="2" placeholder="put password" required>
+        <c:if test="${not empty error}">
+            <span class="error" style="text-align: right;">${error}</span>
+        </c:if>
     </fieldset>
     <footer>
         <input type="hidden"
                name="${_csrf.parameterName}"
                value="${_csrf.token}"/>
         <%--        <label><input type="checkbox" tabindex="3">Keep me logged in</label>--%>
+        <label><input name="remember-me" type="checkbox" tabindex="3">Keep me logged in</label>
+
+<%--        <label for="rememberKeyId"><input name="remember-me" id="rememberKeyId"
+                                          type="checkbox" class="checkAdmin" tabindex="3">Keep me logged in</label>--%>
+        <%--        <input id="remember-me" name="remember-me"
+                       type="checkbox" /> <label for="remember-me">Запомнить</label>--%>
+
         <input type="submit" class="btnLogin" value="Login" tabindex="4">
-        <c:if test="${not empty error}">
-            <span class="error">${error}</span>
-        </c:if>
     </footer>
 </form>
 <footer id="main">

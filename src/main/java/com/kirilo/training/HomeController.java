@@ -2,6 +2,10 @@ package com.kirilo.training;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDecisionManager;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +21,9 @@ import java.security.Principal;
 public class HomeController {
 
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
+    @Autowired
+    private AccessDecisionManager decisionManager;
 
     /*
      * Simply selects the home view to render by returning its name.
@@ -37,14 +44,14 @@ public class HomeController {
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String mainPage() {
-
+        printUserDetails();
         return "/content/user";
 
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage() {
-
+        printUserDetails();
         return "/content/admin";
 
     }
@@ -75,4 +82,12 @@ public class HomeController {
         return model;
     }
 
+    private void printUserDetails() {
+
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        logger.info("username: " + userDetails.getUsername());
+        logger.info("password: " + userDetails.getPassword());
+
+        userDetails.getAuthorities().forEach(authority -> logger.info(authority.getAuthority()));
+    }
 }
