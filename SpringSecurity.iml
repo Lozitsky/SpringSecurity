@@ -22,6 +22,7 @@
         <fileset id="web application context" name="MVC application context" removed="true">
           <file>file://$MODULE_DIR$/web/WEB-INF/config/spring/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/web/WEB-INF/config/spring/spring-security.xml</file>
+          <file>file://$MODULE_DIR$/web/WEB-INF/config/spring/mysql-datasource.xml</file>
         </fileset>
         <fileset id="web dispatcher servlet context" name="MVC dispatcher servlet context" removed="true">
           <file>file://$MODULE_DIR$/web/WEB-INF/config/spring/dispatcher-servlet.xml</file>
