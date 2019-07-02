@@ -1,5 +1,6 @@
-package com.kirilo.training;
+package com.kirilo.training.controllers;
 
+import com.kirilo.training.interfaces.Process;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class HomeController {
     @Autowired
     private AccessDecisionManager decisionManager;
 
+    @Autowired
+    private Process process;
+
     /*
      * Simply selects the home view to render by returning its name.
      */
@@ -44,6 +48,9 @@ public class HomeController {
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String mainPage() {
+
+        logger.info(process.getMessage());
+
         printUserDetails();
         return "/content/user";
 
