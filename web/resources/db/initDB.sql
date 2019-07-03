@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `groups`;
 CREATE TABLE users
 (
     username VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    password VARCHAR(60) NOT NULL,
     enabled  BIT(1)      NOT NULL DEFAULT 1,
     primary key (username)
 );

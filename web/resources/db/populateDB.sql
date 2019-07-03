@@ -34,3 +34,12 @@ VALUES ('user', 2);
 INSERT INTO group_members(username, group_id)
 VALUES ('admin', 1);
 
+# https://www.bcryptgenerator.com/
+# https://stackoverflow.com/a/52420168/9586230
+UPDATE users
+SET password = '$2a$12$gOeQpQ2fj7FRzlrp/.XQnO6cd3LQO65gqsqzJjDxAtC/zJiUI9u6u'
+WHERE username = 'user';
+
+UPDATE users
+SET password = '$2a$12$S29k3A2Zims1rUqRe/ojT.cHukzgWvf/95WF2RFR93AxAvxAFNvcm'
+WHERE username = 'admin';
