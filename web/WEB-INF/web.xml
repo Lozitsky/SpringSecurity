@@ -51,4 +51,20 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+<!--    http://www.telerik.com/fiddler -->
+    <security-constraint>
+        <display-name>ssl</display-name>
+        <web-resource-collection>
+            <web-resource-name>all-pages</web-resource-name>
+            <description/>
+            <url-pattern>/*</url-pattern>
+<!--            <http-method>POST</http-method>-->
+        </web-resource-collection>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
 </web-app>
