@@ -53,18 +53,18 @@
     </servlet-mapping>
 
 <!--    http://www.telerik.com/fiddler -->
-    <security-constraint>
+<!--    <security-constraint>
         <display-name>ssl</display-name>
         <web-resource-collection>
             <web-resource-name>all-pages</web-resource-name>
             <description/>
             <url-pattern>/*</url-pattern>
-<!--            <http-method>POST</http-method>-->
+&lt;!&ndash;            <http-method>POST</http-method>&ndash;&gt;
         </web-resource-collection>
         <user-data-constraint>
             <description/>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
-    </security-constraint>
+    </security-constraint>-->
 
 </web-app>

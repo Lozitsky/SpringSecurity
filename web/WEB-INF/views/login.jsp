@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Simple Login Form</title>
-<%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/reset.css">--%>
+    <%--    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/reset.css">--%>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/reset.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/structure.css">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
@@ -21,7 +21,8 @@
 
 <%--<c:url value="${request.getContextPath()}/check_user" var="login_"/>
 <form class="box login" action="${login_}" method='post'>--%>
-<form class="box login" action="<%=request.getContextPath()%>/check_user" method="post">
+<%--<form class="box login" action="<%=request.getContextPath()%>/check_user" method="post">--%>
+<form class="box login" action="${pageContext.request.contextPath}/check_user" method="post">
     <fieldset class="boxBody">
         <label>Username</label>
         <input type="text" name='user_login' value='' tabindex="1" placeholder="put username" required>
@@ -43,15 +44,15 @@
         <%--        <label><input type="checkbox" tabindex="3">Keep me logged in</label>--%>
         <label><input name="remember-me" type="checkbox" tabindex="3">Keep me logged in</label>
 
-<%--        <label for="rememberKeyId"><input name="remember-me" id="rememberKeyId"
-                                          type="checkbox" class="checkAdmin" tabindex="3">Keep me logged in</label>--%>
+        <%--        <label for="rememberKeyId"><input name="remember-me" id="rememberKeyId"
+                                                  type="checkbox" class="checkAdmin" tabindex="3">Keep me logged in</label>--%>
         <%--        <input id="remember-me" name="remember-me"
                        type="checkbox" /> <label for="remember-me">Запомнить</label>--%>
 
         <input type="submit" class="btnLogin" value="Login" tabindex="4">
-<%--        <c:if test="${not empty error}">
-            <span class="error">${error}</span>
-        </c:if>--%>
+        <%--        <c:if test="${not empty error}">
+                    <span class="error">${error}</span>
+                </c:if>--%>
     </footer>
 </form>
 <footer id="main">

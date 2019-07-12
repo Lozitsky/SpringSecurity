@@ -8,8 +8,13 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     <beans:import resource="mysql-datasource.xml"/>
 
-    <http use-expressions="true">
-<!--                        <csrf disabled="true"/>-->
+    <http use-expressions="true" auto-config="true">
+        <!--                        <csrf disabled="true"/>-->
+        <intercept-url pattern="/**" requires-channel="https"/>
+        <port-mappings>
+            <port-mapping http="8080" https="8181"/>
+        </port-mappings>
+
         <access-denied-handler error-page="/accessDenied"/>
 
         <!--        <intercept-url pattern="/user/**" access="hasRole('users')"/>-->
@@ -18,17 +23,17 @@
 
         <!--        <intercept-url pattern="/admin/**" access="hasRole('admins')"/>-->
 
-        <form-login login-page='/login'
-                    login-processing-url="/check_user"
-                    default-target-url="/user"
-                    authentication-failure-url="/login?error=true"
-                    username-parameter="user_login"
-                    password-parameter="password_login"/>
+        <form-login login-page="/login"
+                login-processing-url="/check_user"
+                default-target-url="/user"
+                authentication-failure-url="/login?error=true"
+                username-parameter="user_login"
+                password-parameter="password_login"/>
 
         <logout logout-success-url="/login" delete-cookies="JSESSIONID"/>
-<!--        <logout logout-success-url="/login"/>-->
+        <!--        <logout logout-success-url="/login"/>-->
 
-<!--                <remember-me key="uniqueAndSecret"/>-->
+        <!--                <remember-me key="uniqueAndSecret"/>-->
         <!--        data-source-ref="dataSource"-->
         <remember-me token-validity-seconds="1209600" remember-me-parameter="remember-me" data-source-ref="dataSource"/>
     </http>
@@ -107,8 +112,8 @@
 
         </beans:bean>-->
 
-<!--    <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder"
-                factory-method="getInstance"/>-->
+    <!--    <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder"
+                    factory-method="getInstance"/>-->
 
     <beans:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg name="strength" value="12"/>
